@@ -25,8 +25,9 @@ public class TwitterStreamConsumer {
 			"新华网", "两岸", "一国两制", "九二共识", "民主", "独裁","共和",
 			"苹果", 
 			"人工智能", "机器学习", 
-			"明镜"
-			//"Artificial Intelligence",
+			"明镜",
+			"Artificial Intelligence", "Machine Learning", "Deep Learning", "Robot", "AI",
+			"Federal Funds Rate"
 	};
 	
 	@Autowired
@@ -41,8 +42,8 @@ public class TwitterStreamConsumer {
 		FilterQuery query = new FilterQuery();
 		query.track(keywords);
 		query.language(new String[]{"zh", "en"});
-		//twitterStream.filter(query);
-		twitterStream.sample("zh");
+		twitterStream.filter(query);
+		//twitterStream.sample("zh");
 		
 		logger.info("Consumer started...");
 	}
