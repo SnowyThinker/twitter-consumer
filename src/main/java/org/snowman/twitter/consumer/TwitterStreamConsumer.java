@@ -11,7 +11,7 @@ import twitter4j.FilterQuery;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 
-@Component
+//@Component
 public class TwitterStreamConsumer {
 	
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(TwitterStreamConsumer.class);
