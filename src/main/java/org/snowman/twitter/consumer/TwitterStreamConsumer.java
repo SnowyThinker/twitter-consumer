@@ -5,7 +5,6 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
 
 import twitter4j.FilterQuery;
 import twitter4j.TwitterStream;
