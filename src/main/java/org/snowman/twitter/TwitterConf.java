@@ -7,7 +7,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 
 @Configuration
-public class TwiggerConf {
+public class TwitterConf {
 
 	@Bean
 	public Twitter twitter() {

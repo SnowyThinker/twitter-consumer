@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
 import org.snowman.twitter.dto.TweetDto;
 import org.snowman.twitter.dto.UrlDto;
@@ -18,6 +19,7 @@ import twitter4j.Status;
 import twitter4j.Twitter;
 
 @Component
+@Slf4j
 public class SpeficUserTimerConsumer {
 	
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(SpeficUserTimerConsumer.class);
@@ -25,8 +27,8 @@ public class SpeficUserTimerConsumer {
 	private static final String USER = "LoneCapital";
 	private static final String REDIS_KEY = "tweets";
 	
-	@Autowired
-	private RedissonClient redissonClient;
+	/*@Autowired
+	private RedissonClient redissonClient;*/
 	
 	@Autowired
 	private Twitter twitter;
@@ -37,15 +39,6 @@ public class SpeficUserTimerConsumer {
 	}
 	
 	public synchronized void testConsume() {
-		
-		/*String userKey = String.format("%s:list:%s", REDIS_KEY, USER);
-		RList<TweetDto> cachedList = redissonClient.getList(userKey);
-		
-		TweetDto lastCached = null;
-		if(null != cachedList && cachedList.size() > 0) {
-			lastCached = cachedList.get(cachedList.size() + 1);
-		}*/
-		
 		ObjectMapper om = new ObjectMapper();
 	
 		Integer page = 1;
@@ -60,13 +53,8 @@ public class SpeficUserTimerConsumer {
 
 				for (Status status : statuses) {
 					TweetDto currentDto = statusToTweetDto(status);
-					
-					System.out.println(om.writeValueAsString(currentDto));
-					/*if(null == lastCached) {
-						
-					}
-					
-					logger.info("@" + status.getUser().getScreenName() + " - " + status.getText());*/
+
+					logger.info(om.writeValueAsString(currentDto));
 				}
 				
 				page += 1;
