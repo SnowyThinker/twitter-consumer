@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.snowman.twitter;
 
 import org.springframework.boot.SpringApplication;
